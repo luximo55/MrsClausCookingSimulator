@@ -19,6 +19,11 @@ public class ActionManager : MonoBehaviour
     public GameObject cookiePlate;
     private GameObject activeObject;
     private int objectType = 0;
+    private int cookieType = 0;
+
+    private int prepareTemp = 0;
+    private int ovenTemp = 0;
+    private int serveTemp = 0;
 
     private int points = 0;
 
@@ -29,11 +34,38 @@ public class ActionManager : MonoBehaviour
         {
             switch (raycasthit.collider.name)
             {
-                case "start":
+                case "milkCookies":
                     if(Input.GetMouseButtonDown(0) && !activeInstantiation)
                     {
                         activeObject = Instantiate(cookieDough);
                         objectType = 1;
+                        cookieType = 1;
+                        activeInstantiation = true;
+                    }
+                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 1)
+                    {
+                        DestroyObject();               
+                    }
+                    break;
+                case "darkCookies":
+                    if(Input.GetMouseButtonDown(0) && !activeInstantiation)
+                    {
+                        activeObject = Instantiate(cookieDough);
+                        objectType = 1;
+                        cookieType = 2;
+                        activeInstantiation = true;
+                    }
+                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 1)
+                    {
+                        DestroyObject();               
+                    }
+                    break;
+                case "whiteCookies":
+                    if(Input.GetMouseButtonDown(0) && !activeInstantiation)
+                    {
+                        activeObject = Instantiate(cookieDough);
+                        objectType = 1;
+                        cookieType = 3;
                         activeInstantiation = true;
                     }
                     else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 1)
@@ -46,11 +78,13 @@ public class ActionManager : MonoBehaviour
                     {
                         DestroyObject();
                         prepareOccupied = true;
+                        prepareTemp = cookieType;
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && prepareOccupied)
                     {
                         activeObject = Instantiate(rawCookies);
                         objectType = 2;
+                        cookieType = prepareTemp;
                         activeInstantiation = true;
                         prepareOccupied = false;
                     }
@@ -60,11 +94,13 @@ public class ActionManager : MonoBehaviour
                     {
                         DestroyObject();
                         ovenOccupied = true;
+                        ovenTemp = cookieType;
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && ovenOccupied)
                     {
                         activeObject = Instantiate(bakedCookies);
                         objectType = 3;
+                        cookieType = ovenTemp;
                         activeInstantiation = true;
                         ovenOccupied = false;
                     }
@@ -74,11 +110,13 @@ public class ActionManager : MonoBehaviour
                     {
                         DestroyObject();
                         servingItems++;
+                        serveTemp = cookieType;
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingItems > 0)
                     {
                         activeObject = Instantiate(cookiePlate);
                         objectType = 4;
+                        cookieType = serveTemp;
                         activeInstantiation = true;
                         servingItems--;
                     }
