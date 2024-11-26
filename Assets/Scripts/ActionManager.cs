@@ -11,8 +11,12 @@ public class ActionManager : MonoBehaviour
     private bool activeInstantiation;
     private bool prepareOccupied = false;
     private bool ovenOccupied = false;
+    public int servingItems = 0;
+
     public GameObject cookieDough;
+    public GameObject rawCookies;
     public GameObject bakedCookies;
+    public GameObject cookiePlate;
     private GameObject activeObject;
     private int objectType = 0;
 
@@ -32,30 +36,27 @@ public class ActionManager : MonoBehaviour
                         objectType = 1;
                         activeInstantiation = true;
                     }
-                    else if(Input.GetMouseButtonDown(1) && activeInstantiation && objectType == 1)
+                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 1)
                     {
                         DestroyObject();               
                     }
                     break;
-
-                //TODO: make separate prefab for non-baked cookies and assign it to the variable
                 case "prepare":
-                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !prepareOccupied && objectType == 1)
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !prepareOccupied && (objectType == 1 || objectType == 2))
                     {
                         DestroyObject();
                         prepareOccupied = true;
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && prepareOccupied)
                     {
-                        activeObject = Instantiate(bakedCookies);
+                        activeObject = Instantiate(rawCookies);
                         objectType = 2;
                         activeInstantiation = true;
                         prepareOccupied = false;
                     }
                     break;
                 case "oven":
-                    
-                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !ovenOccupied && objectType == 2)
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !ovenOccupied && (objectType == 2 || objectType == 3))
                     {
                         DestroyObject();
                         ovenOccupied = true;
@@ -68,8 +69,22 @@ public class ActionManager : MonoBehaviour
                         ovenOccupied = false;
                     }
                     break;
+                case "serve":
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && servingItems < 3 && (objectType == 3 || objectType == 4))
+                    {
+                        DestroyObject();
+                        servingItems++;
+                    }
+                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingItems > 0)
+                    {
+                        activeObject = Instantiate(cookiePlate);
+                        objectType = 4;
+                        activeInstantiation = true;
+                        servingItems--;
+                    }
+                    break;
                 case "finish":
-                    if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 3)
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 4)
                     {
                         DestroyObject();
                         Points();
