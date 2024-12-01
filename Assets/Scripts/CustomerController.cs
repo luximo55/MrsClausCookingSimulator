@@ -5,6 +5,7 @@ using UnityEngine;
 public class CustomerController : MonoBehaviour
 {
     [SerializeField] private GameObject customer;
+    [SerializeField] private WorkerEfficiency workerEfficiency;
     private GameObject activeCustomer;
     public int cookieTypeOrdered = 0;
     public bool customerActive = false;
@@ -25,11 +26,11 @@ public class CustomerController : MonoBehaviour
     {
         if(cookieTypeServed == cookieTypeOrdered)
         {
-            Debug.Log("CORRECT");
+            workerEfficiency.Efficiency += 20f;
         }
         else if (cookieTypeServed != cookieTypeOrdered)
         {
-            Debug.Log("WRONG");
+            workerEfficiency.Efficiency -= 15f;
         }
         DeinitializeCustomer();
     }

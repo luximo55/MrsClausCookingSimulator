@@ -1538,6 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customer: {fileID: 7276597586162465818, guid: d1f3b309c2cd47057a70857d73ca2636, type: 3}
+  workerEfficiency: {fileID: 527218497}
   cookieTypeOrdered: 0
   customerActive: 0
 --- !u!4 &1319223956

@@ -11,13 +11,14 @@ public class WorkerEfficiency : MonoBehaviour
     {
         if(Efficiency > 100)
         {
-            Efficiency = 100;
+            Efficiency = 100f;
         }
         else if(Efficiency < 0)
         {
             Debug.Log("Game over");
+            Efficiency = 0f;
         }
         progress.localScale = new Vector3(Efficiency/100, progress.localScale.y, progress.localScale.z);
-        Efficiency -= 0.1f * Time.deltaTime;
+        Efficiency -= 1.5f * Time.deltaTime;
     }
 }
