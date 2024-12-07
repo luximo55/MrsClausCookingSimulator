@@ -56,5 +56,18 @@ public class SantaManager : MonoBehaviour
     {
         state = 2;
         activeSanta = Instantiate(santa, santaPos, Quaternion.identity);
+        Invoke("RemoveCookies", 3f);
+    }
+
+    public void RemoveCookies()
+    {
+        if(actionManager.servingOccupied1)
+        {
+            actionManager.SantaStealCookies(1);
+        }
+        else if(actionManager.servingOccupied2)
+        {
+            actionManager.SantaStealCookies(2);
+        }
     }
 }

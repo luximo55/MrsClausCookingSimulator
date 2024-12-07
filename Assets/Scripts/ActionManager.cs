@@ -200,6 +200,22 @@ public class ActionManager : MonoBehaviour
     {
         cookieTypeServed = cookieType;
     }
+
+    public void SantaStealCookies(int servePlace)
+    {
+        if(servePlace == 1)
+        {
+            serveTemp1 = 0;
+            servingOccupied1 = false;
+            stationManager.ChangeMaterial("serve1", servingOccupied1);
+        }
+        else if(servePlace == 2)
+        {
+            serveTemp2 = 0;
+            servingOccupied2 = false;
+            stationManager.ChangeMaterial("serve2", servingOccupied2);
+        }
+    }
 }
 
 
