@@ -1852,7 +1852,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionManager: {fileID: 189256661}
-  santa: {fileID: 8907059205462850318, guid: 32da59189c70a97d995193df12e3bc1f, type: 3}
+  santaSleigh: {fileID: 8907059205462850318, guid: 32da59189c70a97d995193df12e3bc1f, type: 3}
+  santa: {fileID: 8783434870544984907, guid: 9719cd236c910cd66b4e87f62853192c, type: 3}
 --- !u!1 &1442887767
 GameObject:
   m_ObjectHideFlags: 0
