@@ -6,7 +6,8 @@ public class StationManager : MonoBehaviour
 {
     [SerializeField] private GameObject prepare;
     [SerializeField] private GameObject oven;
-    [SerializeField] private GameObject serve;
+    [SerializeField] private GameObject serve1;
+    [SerializeField] private GameObject serve2;
 
     public Material occupiedMat;
     public Material unoccupiedMat;
@@ -35,14 +36,24 @@ public class StationManager : MonoBehaviour
                     oven.GetComponent<MeshRenderer>().material = unoccupiedMat;
                 }
                 break;
-            case "serve":
+            case "serve1":
                 if(occupied)
                 {
-                    serve.GetComponent<MeshRenderer>().material = occupiedMat;
+                    serve1.GetComponent<MeshRenderer>().material = occupiedMat;
                 }
                 else if (!occupied)
                 {
-                    serve.GetComponent<MeshRenderer>().material = unoccupiedMat;
+                    serve1.GetComponent<MeshRenderer>().material = unoccupiedMat;
+                }
+                break;
+            case "serve2":
+                if(occupied)
+                {
+                    serve2.GetComponent<MeshRenderer>().material = occupiedMat;
+                }
+                else if (!occupied)
+                {
+                    serve2.GetComponent<MeshRenderer>().material = unoccupiedMat;
                 }
                 break;
         }

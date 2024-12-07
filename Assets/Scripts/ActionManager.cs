@@ -16,7 +16,8 @@ public class ActionManager : MonoBehaviour
     private bool ovenOccupied = false;
     private bool ovenActive = false;
     private bool preparing = false;
-    public int servingItems = 0;
+    public bool servingOccupied1 = false;
+    public bool servingOccupied2 = false;
 
     public GameObject cookieDough;
     public GameObject rawCookies;
@@ -29,7 +30,8 @@ public class ActionManager : MonoBehaviour
 
     private int prepareTemp = 0;
     private int ovenTemp = 0;
-    private int serveTemp = 0;
+    private int serveTemp1 = 0;
+    private int serveTemp2 = 0;
 
     private int points = 0;
 
@@ -125,22 +127,40 @@ public class ActionManager : MonoBehaviour
                         stationManager.ChangeMaterial("oven", ovenOccupied);
                     }
                     break;
-                case "serve":
-                    if(Input.GetMouseButtonDown(0) && activeInstantiation && servingItems < 3 && (objectType == 3 || objectType == 4))
+                case "serve1":
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !servingOccupied1 && (objectType == 3 || objectType == 4))
                     {
                         DestroyObject();
-                        servingItems++;
-                        serveTemp = cookieType;
-                        stationManager.ChangeMaterial("serve", servingItems == 3);
+                        servingOccupied1 = true;
+                        serveTemp1 = cookieType;
+                        stationManager.ChangeMaterial("serve1", servingOccupied1);
                     }
-                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingItems > 0)
+                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1)
                     {
                         activeObject = Instantiate(cookiePlate);
                         objectType = 4;
-                        cookieType = serveTemp;
+                        cookieType = serveTemp1;
                         activeInstantiation = true;
-                        servingItems--;
-                        stationManager.ChangeMaterial("serve", servingItems == 3);
+                        servingOccupied1 = false;
+                        stationManager.ChangeMaterial("serve1", servingOccupied1);
+                    }
+                    break;
+                case "serve2":
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && !servingOccupied2 && (objectType == 3 || objectType == 4))
+                    {
+                        DestroyObject();
+                        servingOccupied2 = true;
+                        serveTemp2 = cookieType;
+                        stationManager.ChangeMaterial("serve2", servingOccupied2);
+                    }
+                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2)
+                    {
+                        activeObject = Instantiate(cookiePlate);
+                        objectType = 4;
+                        cookieType = serveTemp2;
+                        activeInstantiation = true;
+                        servingOccupied2 = false;
+                        stationManager.ChangeMaterial("serve2", servingOccupied2);
                     }
                     break;
                 case "finish":
