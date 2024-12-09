@@ -163,17 +163,30 @@ public class ActionManager : MonoBehaviour
                         stationManager.ChangeMaterial("serve2", servingOccupied2);
                     }
                     break;
-                case "finish":
-                    if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 4 && customerController.customerActive)
+                case "finish1":
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 4 && customerController.customerActive1)
                     {
                         DestroyObject();
                         SendOrder();
-                        customerController.CheckOrder(cookieTypeServed);
+                        customerController.CheckOrder(cookieTypeServed, 1);
                     }
-                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType != 4 && customerController.customerActive)
+                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType != 4 && customerController.customerActive1)
                     {
                         DestroyObject();
-                        customerController.RawOrder();
+                        customerController.RawOrder(1);
+                    }
+                    break;
+                case "finish2":
+                    if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType == 4 && customerController.customerActive2)
+                    {
+                        DestroyObject();
+                        SendOrder();
+                        customerController.CheckOrder(cookieTypeServed, 2);
+                    }
+                    else if(Input.GetMouseButtonDown(0) && activeInstantiation && objectType != 4 && customerController.customerActive2)
+                    {
+                        DestroyObject();
+                        customerController.RawOrder(2);
                     }
                     break;
             }

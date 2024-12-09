@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 8048067082587072160}
   - component: {fileID: 6617313770045364682}
   - component: {fileID: 2877572120287664538}
+  - component: {fileID: 8363425491018044943}
   m_Layer: 0
   m_Name: Elf
   m_TagString: Untagged
@@ -1261,6 +1262,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8363425491018044943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276597586162465818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e2b84dccf0ed3cfa94dbe9d8266caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7373709649626310718
 GameObject:
   m_ObjectHideFlags: 0

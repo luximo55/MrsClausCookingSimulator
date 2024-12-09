@@ -6,53 +6,99 @@ public class CustomerController : MonoBehaviour
 {
     [SerializeField] private GameObject customer;
     [SerializeField] private WorkerEfficiency workerEfficiency;
-    private GameObject activeCustomer;
-    private Animator anim;
-    public int cookieTypeOrdered = 0;
-    public bool customerActive = false;
+    private GameObject activeCustomer1;
+    private GameObject activeCustomer2;
+    public int cookieTypeOrdered1 = 0;
+    public int cookieTypeOrdered2 = 0;
+    public bool customerActive1 = false;
+    public bool customerActive2 = false;
 
     private void Start()
     {
         Invoke("InitializeCustomer", 1);
+        Invoke("InitializeCustomer", 5);
     }
     private void InitializeCustomer()
     {
-        customerActive = true;
-        activeCustomer = Instantiate(customer);
-        cookieTypeOrdered = Random.Range(1, 3);
-        Debug.Log(cookieTypeOrdered);
-        anim = activeCustomer.GetComponent<Animator>();
+        if(!customerActive1)
+        {
+            activeCustomer1 = Instantiate(customer);
+            cookieTypeOrdered1 = Random.Range(1, 3);
+            Debug.Log(cookieTypeOrdered1);
+            customerActive1 = true;
+        }
+        else if(customerActive1)
+        {
+            customerActive2 = true;
+            activeCustomer2 = Instantiate(customer);
+            cookieTypeOrdered2 = Random.Range(1, 3);
+            Debug.Log(cookieTypeOrdered2);
+        }
+        
     }
 
-    public void CheckOrder(int cookieTypeServed)
+    public void CheckOrder(int cookieTypeServed, int customer)
     {
-        if(cookieTypeServed == cookieTypeOrdered)
+        switch(customer)
         {
-            workerEfficiency.Efficiency += 20f;
+            case 1:
+                if(cookieTypeServed == cookieTypeOrdered1)
+                {
+                    workerEfficiency.Efficiency += 20f;
+                }
+                else if (cookieTypeServed != cookieTypeOrdered1)
+                {
+                    workerEfficiency.Efficiency -= 15f;
+                }
+                break;
+            case 2:
+                if(cookieTypeServed == cookieTypeOrdered2)
+                {
+                    workerEfficiency.Efficiency += 20f;
+                }
+                else if (cookieTypeServed != cookieTypeOrdered2)
+                {
+                    workerEfficiency.Efficiency -= 15f;
+                }
+                break;
         }
-        else if (cookieTypeServed != cookieTypeOrdered)
-        {
-            workerEfficiency.Efficiency -= 15f;
-        }
-        CustomerWalkAway();
+        CustomerWalkAway(customer);
     }
-    public void RawOrder()
+    public void RawOrder(int customer)
     {
         Debug.Log("This shit is raw");
         workerEfficiency.Efficiency -=20f;
-        CustomerWalkAway();
+        CustomerWalkAway(customer);
     }
 
-    private void CustomerWalkAway()
+    private void CustomerWalkAway(int customer)
     {
-        anim.SetTrigger("WalkAway");
-        Invoke("DeinitializeCustomer", 3f);
+        switch (customer)
+        {
+            case 1:
+                activeCustomer1.GetComponent<Animator>().SetTrigger("WalkAway");
+                break;
+            case 2:
+                activeCustomer2.GetComponent<Animator>().SetTrigger("WalkAway");
+                break;
+        }
+        StartCoroutine(DeinitializeCustomer(customer, 3f));
     }
 
-    private void DeinitializeCustomer()
+    private IEnumerator DeinitializeCustomer(int customer, float delay)
     {
-        customerActive = false;
-        Destroy(activeCustomer);
+        yield return new WaitForSeconds(delay);
+        switch(customer)
+        {
+            case 1:
+                customerActive1 = false;
+                Destroy(activeCustomer1);
+                break;
+            case 2:
+                customerActive2 = false;
+                Destroy(activeCustomer2);
+                break;
+        }
         Invoke("InitializeCustomer", 2f);
     }
 }
