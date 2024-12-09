@@ -7,6 +7,7 @@ public class CustomerController : MonoBehaviour
     [SerializeField] private GameObject customer;
     [SerializeField] private WorkerEfficiency workerEfficiency;
     private GameObject activeCustomer;
+    private Animator anim;
     public int cookieTypeOrdered = 0;
     public bool customerActive = false;
 
@@ -20,6 +21,7 @@ public class CustomerController : MonoBehaviour
         activeCustomer = Instantiate(customer);
         cookieTypeOrdered = Random.Range(1, 3);
         Debug.Log(cookieTypeOrdered);
+        anim = activeCustomer.GetComponent<Animator>();
     }
 
     public void CheckOrder(int cookieTypeServed)
@@ -32,18 +34,25 @@ public class CustomerController : MonoBehaviour
         {
             workerEfficiency.Efficiency -= 15f;
         }
-        DeinitializeCustomer();
+        CustomerWalkAway();
     }
     public void RawOrder()
     {
         Debug.Log("This shit is raw");
-        DeinitializeCustomer();
+        workerEfficiency.Efficiency -=20f;
+        CustomerWalkAway();
+    }
+
+    private void CustomerWalkAway()
+    {
+        anim.SetTrigger("WalkAway");
+        Invoke("DeinitializeCustomer", 3f);
     }
 
     private void DeinitializeCustomer()
     {
         customerActive = false;
         Destroy(activeCustomer);
-        Invoke("InitializeCustomer", 3);
+        Invoke("InitializeCustomer", 2f);
     }
 }
