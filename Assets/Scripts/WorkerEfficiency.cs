@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class WorkerEfficiency : MonoBehaviour
 {
     [SerializeField] private RectTransform progress;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Text presentsText;
     public float Efficiency = 100;
     public float presents = 0;
@@ -20,7 +21,7 @@ public class WorkerEfficiency : MonoBehaviour
         }
         else if(Efficiency < 0)
         {
-            Debug.Log("Game over");
+            gameManager.GameOver(score);
             Efficiency = 0f;
         }
         progress.localScale = new Vector3(Efficiency/100, progress.localScale.y, progress.localScale.z);

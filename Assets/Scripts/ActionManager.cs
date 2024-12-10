@@ -32,9 +32,7 @@ public class ActionManager : MonoBehaviour
     private int ovenTemp = 0;
     private int serveTemp1 = 0;
     private int serveTemp2 = 0;
-
-    private int points = 0;
-
+    
     void Update()
     {
         Ray ray = main.ScreenPointToRay(Input.mousePosition);
