@@ -93,14 +93,20 @@ public class ActionManager : MonoBehaviour
                             StartCoroutine(PrepareAnimation(cookieType));
                             preparing = true;
                         }
+                        else if (objectType == 2)
+                        {
+                            for(int i = 0; i < 4; i++)
+                            {
+                                activePrepareCookies[i] = Instantiate(prepareCookies[cookieType-1], trayPositions[i], Quaternion.Euler(0,0,0));
+                            }
+                        }
                         DestroyObject();
                         prepareOccupied = true;
                         prepareTemp = cookieType;
-                        //stationManager.ChangeMaterial("prepare", prepareOccupied);
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && prepareOccupied && !preparing)
                     {
-                        activeObject = Instantiate(rawCookies[prepareTemp]);
+                        activeObject = Instantiate(rawCookies[prepareTemp-1]);
                         objectType = 2;
                         cookieType = prepareTemp;
                         activeInstantiation = true;
@@ -109,7 +115,6 @@ public class ActionManager : MonoBehaviour
                         {
                             Destroy(activePrepareCookies[i]);
                         }
-                        //stationManager.ChangeMaterial("prepare", prepareOccupied);
                     }
                     break;
                 case "oven":
@@ -127,7 +132,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && ovenOccupied && !ovenActive)
                     {
-                        activeObject = Instantiate(bakedCookies[ovenTemp]);
+                        activeObject = Instantiate(bakedCookies[ovenTemp-1]);
                         objectType = 3;
                         cookieType = ovenTemp;
                         activeInstantiation = true;
@@ -145,7 +150,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1)
                     {
-                        activeObject = Instantiate(cookiePlate[serveTemp1]);
+                        activeObject = Instantiate(cookiePlate[serveTemp1-1]);
                         objectType = 4;
                         cookieType = serveTemp1;
                         activeInstantiation = true;
@@ -163,7 +168,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2)
                     {
-                        activeObject = Instantiate(cookiePlate[serveTemp2]);
+                        activeObject = Instantiate(cookiePlate[serveTemp2-1]);
                         objectType = 4;
                         cookieType = serveTemp2;
                         activeInstantiation = true;
@@ -206,8 +211,8 @@ public class ActionManager : MonoBehaviour
         for(int i = 0; i < 4; i++)
         {
             activePrepareCookies[i] = Instantiate(prepareCookies[type-1], trayPositions[i], Quaternion.Euler(0,0,0));
+            activePrepareCookies[i].GetComponent<Animator>().SetTrigger("NewDough");
             yield return new WaitForSeconds(0.5f);
-
         }
         
     }
