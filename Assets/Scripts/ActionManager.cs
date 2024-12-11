@@ -22,13 +22,19 @@ public class ActionManager : MonoBehaviour
     public bool servingOccupied2 = false;
 
     public Vector3[] trayPositions;
+    public Vector3[] platePositions1;
+    public Vector3[] platePositions2;
+    public Quaternion[] plateRotations;
     public GameObject[] prepareCookies;
+    public GameObject[] serveCookies;
     public GameObject[] cookieDough;
     public GameObject[] rawCookies;
     public GameObject[] bakedCookies;
     public GameObject[] cookiePlate;
     private GameObject activeObject;
     private GameObject[] activePrepareCookies = new GameObject[4];
+    private GameObject[] activeServeCookies1 = new GameObject [4];
+    private GameObject[] activeServeCookies2 = new GameObject [4];
     private int objectType = 0;
     private int cookieType = 0;
     public int cookieTypeServed = 0;
@@ -143,10 +149,20 @@ public class ActionManager : MonoBehaviour
                 case "serve1":
                     if(Input.GetMouseButtonDown(0) && activeInstantiation && !servingOccupied1 && (objectType == 3 || objectType == 4))
                     {
+                        if(objectType == 3)
+                        {
+                            StartCoroutine(ServeAnimation(cookieType, 1));
+                        }
+                        else if (objectType == 4)
+                        {
+                            for(int i = 0; i < 4; i++)
+                            {
+                                activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], plateRotations[i]);
+                            }
+                        }
                         DestroyObject();
                         servingOccupied1 = true;
                         serveTemp1 = cookieType;
-                        stationManager.ChangeMaterial("serve1", servingOccupied1);
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1)
                     {
@@ -155,16 +171,29 @@ public class ActionManager : MonoBehaviour
                         cookieType = serveTemp1;
                         activeInstantiation = true;
                         servingOccupied1 = false;
-                        stationManager.ChangeMaterial("serve1", servingOccupied1);
+                        for(int i = 0; i < 4; i++)
+                        {
+                            Destroy(activeServeCookies1[i]);
+                        }
                     }
                     break;
                 case "serve2":
                     if(Input.GetMouseButtonDown(0) && activeInstantiation && !servingOccupied2 && (objectType == 3 || objectType == 4))
                     {
+                        if(objectType == 3)
+                        {
+                            StartCoroutine(ServeAnimation(cookieType, 2));
+                        }
+                        else if (objectType == 4)
+                        {
+                            for(int i = 0; i < 4; i++)
+                            {
+                                activeServeCookies2[i] = Instantiate(serveCookies[cookieType-1], platePositions2[i], plateRotations[i]);
+                            }
+                        }
                         DestroyObject();
                         servingOccupied2 = true;
                         serveTemp2 = cookieType;
-                        stationManager.ChangeMaterial("serve2", servingOccupied2);
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2)
                     {
@@ -173,7 +202,10 @@ public class ActionManager : MonoBehaviour
                         cookieType = serveTemp2;
                         activeInstantiation = true;
                         servingOccupied2 = false;
-                        stationManager.ChangeMaterial("serve2", servingOccupied2);
+                        for(int i = 0; i < 4; i++)
+                        {
+                            Destroy(activeServeCookies2[i]);
+                        }
                     }
                     break;
                 case "finish1":
@@ -214,7 +246,29 @@ public class ActionManager : MonoBehaviour
             activePrepareCookies[i].GetComponent<Animator>().SetTrigger("NewDough");
             yield return new WaitForSeconds(0.5f);
         }
-        
+    }
+
+    private IEnumerator ServeAnimation(int type, int servingStation)
+    {
+        switch(servingStation)
+        {
+            case 1:
+                for(int i = 0; i < 4; i++)
+                {
+                    activeServeCookies1[i] = Instantiate(serveCookies[type-1], platePositions1[i], plateRotations[i]);
+                    activeServeCookies1[i].GetComponent<Animator>().SetTrigger("NewDough");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                break;
+            case 2:
+                for(int i = 0; i < 4; i++)
+                {
+                    activeServeCookies2[i] = Instantiate(serveCookies[type-1], platePositions2[i], plateRotations[i]);
+                    activeServeCookies2[i].GetComponent<Animator>().SetTrigger("NewDough");
+                    yield return new WaitForSeconds(0.5f);
+                }
+                break;
+        }
     }
 
     private void PrepareTimer()
@@ -244,13 +298,11 @@ public class ActionManager : MonoBehaviour
         {
             serveTemp1 = 0;
             servingOccupied1 = false;
-            stationManager.ChangeMaterial("serve1", servingOccupied1);
         }
         else if(servePlace == 2)
         {
             serveTemp2 = 0;
             servingOccupied2 = false;
-            stationManager.ChangeMaterial("serve2", servingOccupied2);
         }
     }
 }

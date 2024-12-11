@@ -16,16 +16,6 @@ public class StationManager : MonoBehaviour
     {
         switch (stationName)
         {
-            case "prepare":
-                if(occupied)
-                {
-                    prepare.GetComponent<MeshRenderer>().material = occupiedMat;
-                }
-                else if (!occupied)
-                {
-                    prepare.GetComponent<MeshRenderer>().material = unoccupiedMat;
-                }
-                break;
             case "oven":
                 if(occupied)
                 {
@@ -34,26 +24,6 @@ public class StationManager : MonoBehaviour
                 else if (!occupied)
                 {
                     oven.GetComponent<MeshRenderer>().material = unoccupiedMat;
-                }
-                break;
-            case "serve1":
-                if(occupied)
-                {
-                    serve1.GetComponent<MeshRenderer>().material = occupiedMat;
-                }
-                else if (!occupied)
-                {
-                    serve1.GetComponent<MeshRenderer>().material = unoccupiedMat;
-                }
-                break;
-            case "serve2":
-                if(occupied)
-                {
-                    serve2.GetComponent<MeshRenderer>().material = occupiedMat;
-                }
-                else if (!occupied)
-                {
-                    serve2.GetComponent<MeshRenderer>().material = unoccupiedMat;
                 }
                 break;
         }
