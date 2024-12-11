@@ -25,8 +25,8 @@ public class WorkerEfficiency : MonoBehaviour
             Efficiency = 0f;
         }
         progress.localScale = new Vector3(Efficiency/100, progress.localScale.y, progress.localScale.z);
-        Efficiency -= 1.5f * Time.deltaTime;
-
+        Efficiency -= 1f * Time.deltaTime;
+        //TODO: increasing difficulty with score, check score in Update and after (let's say) 100 it increases by .5
         presents += (5 * (Efficiency/100)) * Time.deltaTime;
         score = (int)presents;
         presentsText.text = score.ToString();

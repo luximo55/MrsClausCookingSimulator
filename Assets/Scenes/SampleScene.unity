@@ -445,10 +445,10 @@ MonoBehaviour:
   - {x: -5.55, y: 0.26, z: -3.272}
   - {x: -6.08, y: 0.24, z: -3.222}
   plateRotations:
-  - {x: 0, y: 0, z: 0, w: 0}
-  - {x: 0.181, y: 0.00142, z: 0.00772, w: 0.983}
-  - {x: 0, y: -29, z: -27, w: 0}
-  - {x: 10, y: 4.8, z: 25.78, w: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: -20.65, y: 0.047, z: 0.9}
+  - {x: 0, y: -29, z: -27}
+  - {x: 10, y: 4.8, z: 25.78}
   prepareCookies:
   - {fileID: 393556488857973013, guid: ff5ae590d7774a608b3174482e6a58cc, type: 3}
   - {fileID: 4839076635919413398, guid: 4fb82013883bfc03595cc1a5897e7721, type: 3}
@@ -489,71 +489,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 35141624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &240977438
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1438676968868349148, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.272
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.94139767
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.058450047
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.24346198
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.22600958
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -29
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -27
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_Name
-      value: bakedMilkCookie (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf8a27423e4909053a54873b165bde31, type: 3}
 --- !u!1 &295172142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,71 +2051,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finalScoreText: {fileID: 527644526}
   GOPanel: {fileID: 2024847547}
---- !u!1001 &1139959489
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1438676968868349148, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.382
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_Name
-      value: bakedMilkCookie
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf8a27423e4909053a54873b165bde31, type: 3}
 --- !u!1 &1149669212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2604,71 +2474,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ded1d59fb5c920900b40d4cf03d31ab8, type: 3}
   m_PrefabInstance: {fileID: 1394777476}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1404567015
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1438676968868349148, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.6020002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.983776
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.17922282
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.0018111897
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.00780023
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -20.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.047
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_Name
-      value: bakedMilkCookie (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf8a27423e4909053a54873b165bde31, type: 3}
 --- !u!1 &1410329912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2821,71 +2626,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442887767}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1453640865
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1438676968868349148, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.2220001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9710531
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.094191015
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.021239368
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.21847843
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 4.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716676715096466227, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 25.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_Name
-      value: bakedMilkCookie (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061085158895303456, guid: cf8a27423e4909053a54873b165bde31, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf8a27423e4909053a54873b165bde31, type: 3}
 --- !u!1 &1613164496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,7 +3573,3 @@ SceneRoots:
   - {fileID: 35141624}
   - {fileID: 1765160864}
   - {fileID: 295172145}
-  - {fileID: 1139959489}
-  - {fileID: 1453640865}
-  - {fileID: 240977438}
-  - {fileID: 1404567015}

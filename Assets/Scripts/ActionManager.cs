@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Transactions;
 using Unity.Profiling;
+using UnityEditor;
 using UnityEngine;
 
 public class ActionManager : MonoBehaviour
@@ -18,13 +19,15 @@ public class ActionManager : MonoBehaviour
     private bool ovenOccupied = false;
     private bool ovenActive = false;
     private bool preparing = false;
+    private bool serving1 = false;
+    private bool serving2 = false;
     public bool servingOccupied1 = false;
     public bool servingOccupied2 = false;
 
     public Vector3[] trayPositions;
     public Vector3[] platePositions1;
     public Vector3[] platePositions2;
-    public Quaternion[] plateRotations;
+    public Vector3[] plateRotations;
     public GameObject[] prepareCookies;
     public GameObject[] serveCookies;
     public GameObject[] cookieDough;
@@ -151,20 +154,22 @@ public class ActionManager : MonoBehaviour
                     {
                         if(objectType == 3)
                         {
+                            StartCoroutine(ServeTimer(1));
                             StartCoroutine(ServeAnimation(cookieType, 1));
+                            serving1 = true;
                         }
                         else if (objectType == 4)
                         {
                             for(int i = 0; i < 4; i++)
                             {
-                                activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], plateRotations[i]);
+                                activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
                             }
                         }
                         DestroyObject();
                         servingOccupied1 = true;
                         serveTemp1 = cookieType;
                     }
-                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1)
+                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1 && !serving1)
                     {
                         activeObject = Instantiate(cookiePlate[serveTemp1-1]);
                         objectType = 4;
@@ -182,20 +187,22 @@ public class ActionManager : MonoBehaviour
                     {
                         if(objectType == 3)
                         {
+                            StartCoroutine(ServeTimer(1));
                             StartCoroutine(ServeAnimation(cookieType, 2));
+                            serving2 = true;
                         }
                         else if (objectType == 4)
                         {
                             for(int i = 0; i < 4; i++)
                             {
-                                activeServeCookies2[i] = Instantiate(serveCookies[cookieType-1], platePositions2[i], plateRotations[i]);
+                                activeServeCookies2[i] = Instantiate(serveCookies[cookieType-1], platePositions2[i], Quaternion.Euler(plateRotations[i]));
                             }
                         }
                         DestroyObject();
                         servingOccupied2 = true;
                         serveTemp2 = cookieType;
                     }
-                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2)
+                    else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2 && !serving2)
                     {
                         activeObject = Instantiate(cookiePlate[serveTemp2-1]);
                         objectType = 4;
@@ -255,18 +262,32 @@ public class ActionManager : MonoBehaviour
             case 1:
                 for(int i = 0; i < 4; i++)
                 {
-                    activeServeCookies1[i] = Instantiate(serveCookies[type-1], platePositions1[i], plateRotations[i]);
+                    activeServeCookies1[i] = Instantiate(serveCookies[type-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
                     activeServeCookies1[i].GetComponent<Animator>().SetTrigger("NewDough");
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                 }
                 break;
             case 2:
                 for(int i = 0; i < 4; i++)
                 {
-                    activeServeCookies2[i] = Instantiate(serveCookies[type-1], platePositions2[i], plateRotations[i]);
+                    activeServeCookies2[i] = Instantiate(serveCookies[type-1], platePositions2[i], Quaternion.Euler(plateRotations[i]));
                     activeServeCookies2[i].GetComponent<Animator>().SetTrigger("NewDough");
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                 }
+                break;
+        }
+    }
+
+    private IEnumerator ServeTimer(int num)
+    {
+        yield return new WaitForSeconds(1.1f);
+        switch (num)
+        {
+            case 1:
+                serving1 = false;
+                break;
+            case 2:
+                serving2 = false;
                 break;
         }
     }
@@ -274,12 +295,10 @@ public class ActionManager : MonoBehaviour
     private void PrepareTimer()
     {
         preparing = false;
-        Debug.Log("Preparing over");
     }
     private void OvenTimer()
     {
         ovenActive = false;
-        Debug.Log("Baking Over");
     }
     private void DestroyObject()
     {
