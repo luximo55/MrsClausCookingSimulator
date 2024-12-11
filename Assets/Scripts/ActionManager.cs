@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Linq;
 using System.Transactions;
+using Unity.Profiling;
 using UnityEngine;
 
 public class ActionManager : MonoBehaviour
@@ -19,11 +21,14 @@ public class ActionManager : MonoBehaviour
     public bool servingOccupied1 = false;
     public bool servingOccupied2 = false;
 
+    public Vector3[] trayPositions;
+    public GameObject[] prepareCookies;
     public GameObject[] cookieDough;
     public GameObject[] rawCookies;
     public GameObject[] bakedCookies;
     public GameObject[] cookiePlate;
     private GameObject activeObject;
+    private GameObject[] activePrepareCookies = new GameObject[4];
     private int objectType = 0;
     private int cookieType = 0;
     public int cookieTypeServed = 0;
@@ -85,12 +90,13 @@ public class ActionManager : MonoBehaviour
                         if(objectType == 1)
                         {
                             Invoke("PrepareTimer", 2f);
+                            StartCoroutine(PrepareAnimation(cookieType));
                             preparing = true;
                         }
                         DestroyObject();
                         prepareOccupied = true;
                         prepareTemp = cookieType;
-                        stationManager.ChangeMaterial("prepare", prepareOccupied);
+                        //stationManager.ChangeMaterial("prepare", prepareOccupied);
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && prepareOccupied && !preparing)
                     {
@@ -99,7 +105,11 @@ public class ActionManager : MonoBehaviour
                         cookieType = prepareTemp;
                         activeInstantiation = true;
                         prepareOccupied = false;
-                        stationManager.ChangeMaterial("prepare", prepareOccupied);
+                        for(int i = 0; i < 4; i++)
+                        {
+                            Destroy(activePrepareCookies[i]);
+                        }
+                        //stationManager.ChangeMaterial("prepare", prepareOccupied);
                     }
                     break;
                 case "oven":
@@ -189,6 +199,17 @@ public class ActionManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private IEnumerator PrepareAnimation(int type)
+    {   
+        for(int i = 0; i < 4; i++)
+        {
+            activePrepareCookies[i] = Instantiate(prepareCookies[type-1], trayPositions[i], Quaternion.Euler(0,0,0));
+            yield return new WaitForSeconds(0.5f);
+
+        }
+        
     }
 
     private void PrepareTimer()
