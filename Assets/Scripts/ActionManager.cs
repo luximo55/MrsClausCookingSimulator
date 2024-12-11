@@ -19,10 +19,10 @@ public class ActionManager : MonoBehaviour
     public bool servingOccupied1 = false;
     public bool servingOccupied2 = false;
 
-    public GameObject cookieDough;
-    public GameObject rawCookies;
-    public GameObject bakedCookies;
-    public GameObject cookiePlate;
+    public GameObject[] cookieDough;
+    public GameObject[] rawCookies;
+    public GameObject[] bakedCookies;
+    public GameObject[] cookiePlate;
     private GameObject activeObject;
     private int objectType = 0;
     private int cookieType = 0;
@@ -43,7 +43,7 @@ public class ActionManager : MonoBehaviour
                 case "milkCookies":
                     if(Input.GetMouseButtonDown(0) && !activeInstantiation)
                     {
-                        activeObject = Instantiate(cookieDough);
+                        activeObject = Instantiate(cookieDough[0]);
                         objectType = 1;
                         cookieType = 1;
                         activeInstantiation = true;
@@ -56,7 +56,7 @@ public class ActionManager : MonoBehaviour
                 case "darkCookies":
                     if(Input.GetMouseButtonDown(0) && !activeInstantiation)
                     {
-                        activeObject = Instantiate(cookieDough);
+                        activeObject = Instantiate(cookieDough[1]);
                         objectType = 1;
                         cookieType = 2;
                         activeInstantiation = true;
@@ -69,7 +69,7 @@ public class ActionManager : MonoBehaviour
                 case "whiteCookies":
                     if(Input.GetMouseButtonDown(0) && !activeInstantiation)
                     {
-                        activeObject = Instantiate(cookieDough);
+                        activeObject = Instantiate(cookieDough[2]);
                         objectType = 1;
                         cookieType = 3;
                         activeInstantiation = true;
@@ -94,7 +94,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && prepareOccupied && !preparing)
                     {
-                        activeObject = Instantiate(rawCookies);
+                        activeObject = Instantiate(rawCookies[prepareTemp]);
                         objectType = 2;
                         cookieType = prepareTemp;
                         activeInstantiation = true;
@@ -117,7 +117,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && ovenOccupied && !ovenActive)
                     {
-                        activeObject = Instantiate(bakedCookies);
+                        activeObject = Instantiate(bakedCookies[ovenTemp]);
                         objectType = 3;
                         cookieType = ovenTemp;
                         activeInstantiation = true;
@@ -135,7 +135,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied1)
                     {
-                        activeObject = Instantiate(cookiePlate);
+                        activeObject = Instantiate(cookiePlate[serveTemp1]);
                         objectType = 4;
                         cookieType = serveTemp1;
                         activeInstantiation = true;
@@ -153,7 +153,7 @@ public class ActionManager : MonoBehaviour
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && servingOccupied2)
                     {
-                        activeObject = Instantiate(cookiePlate);
+                        activeObject = Instantiate(cookiePlate[serveTemp2]);
                         objectType = 4;
                         cookieType = serveTemp2;
                         activeInstantiation = true;

@@ -534,10 +534,22 @@ MonoBehaviour:
   stationManager: {fileID: 170111897}
   servingOccupied1: 0
   servingOccupied2: 0
-  cookieDough: {fileID: 6063867263267275454, guid: 49fede55fd5949bd2b65ca326105be38, type: 3}
-  rawCookies: {fileID: 8010211463806654408, guid: eff378699908a96acaa4f2335af00580, type: 3}
-  bakedCookies: {fileID: 8812173527408069259, guid: 8713dc134685fa0da87dd40594a634e7, type: 3}
-  cookiePlate: {fileID: 3003407566954924883, guid: d0d7016c97a1572e2966c72b916f7944, type: 3}
+  cookieDough:
+  - {fileID: 4241385986269508727, guid: eaf857eff670784a5b323bdc50f2d3ab, type: 3}
+  - {fileID: 1386724672457910460, guid: 6727bb9be13c12014b9e4fbb0e35c3ba, type: 3}
+  - {fileID: 6022753889423097358, guid: d9a3265a75881e9e0af0040289956280, type: 3}
+  rawCookies:
+  - {fileID: 8010211463806654408, guid: eff378699908a96acaa4f2335af00580, type: 3}
+  - {fileID: 8010211463806654408, guid: eff378699908a96acaa4f2335af00580, type: 3}
+  - {fileID: 8010211463806654408, guid: eff378699908a96acaa4f2335af00580, type: 3}
+  bakedCookies:
+  - {fileID: 8812173527408069259, guid: 8713dc134685fa0da87dd40594a634e7, type: 3}
+  - {fileID: 8812173527408069259, guid: 8713dc134685fa0da87dd40594a634e7, type: 3}
+  - {fileID: 8812173527408069259, guid: 8713dc134685fa0da87dd40594a634e7, type: 3}
+  cookiePlate:
+  - {fileID: 3492871691402827604, guid: 9568b6c0bf7daa364aab560175235653, type: 3}
+  - {fileID: 5548935684184934083, guid: e20fa8f0f6c7a41988da5894e1b50263, type: 3}
+  - {fileID: 884423176726489603, guid: 4e420ba90552479d099a8b50700afa3d, type: 3}
   cookieTypeServed: 0
 --- !u!4 &189256662
 Transform:
