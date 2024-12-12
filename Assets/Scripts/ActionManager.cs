@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Transactions;
 using Unity.Profiling;
 using UnityEditor;
@@ -162,7 +163,7 @@ public class ActionManager : MonoBehaviour
                         {
                             for(int i = 0; i < 4; i++)
                             {
-                                activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
+                                    activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
                             }
                         }
                         DestroyObject();
@@ -262,17 +263,17 @@ public class ActionManager : MonoBehaviour
             case 1:
                 for(int i = 0; i < 4; i++)
                 {
-                    activeServeCookies1[i] = Instantiate(serveCookies[type-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
-                    activeServeCookies1[i].GetComponent<Animator>().SetTrigger("NewDough");
-                    yield return new WaitForSeconds(0.25f);
+                        activeServeCookies1[i] = Instantiate(serveCookies[type-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
+                        activeServeCookies1[i].GetComponent<Animator>().SetTrigger("NewDough");
+                        yield return new WaitForSeconds(0.25f);
                 }
                 break;
             case 2:
                 for(int i = 0; i < 4; i++)
                 {
-                    activeServeCookies2[i] = Instantiate(serveCookies[type-1], platePositions2[i], Quaternion.Euler(plateRotations[i]));
-                    activeServeCookies2[i].GetComponent<Animator>().SetTrigger("NewDough");
-                    yield return new WaitForSeconds(0.25f);
+                        activeServeCookies2[i] = Instantiate(serveCookies[type-1], platePositions2[i], Quaternion.Euler(plateRotations[i]));
+                        activeServeCookies2[i].GetComponent<Animator>().SetTrigger("NewDough");
+                        yield return new WaitForSeconds(0.25f);
                 }
                 break;
         }
@@ -317,11 +318,19 @@ public class ActionManager : MonoBehaviour
         {
             serveTemp1 = 0;
             servingOccupied1 = false;
+            for(int i = 0; i < 4; i++)
+            {
+                Destroy(activeServeCookies1[i]);
+            }
         }
         else if(servePlace == 2)
         {
             serveTemp2 = 0;
             servingOccupied2 = false;
+            for(int i = 0; i < 4; i++)
+            {
+                Destroy(activeServeCookies2[i]);
+            }
         }
     }
 }
