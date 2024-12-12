@@ -19,12 +19,10 @@ public class Customer : MonoBehaviour
 
         if(!customerController.customerActive1)
         {
-            Debug.Log("Walk1");
             anim.SetTrigger("Walk1");
         }
         else if(customerController.customerActive1)
         {
-            Debug.Log("Walk2");
             anim.SetTrigger("Walk2");
         }
     }
@@ -51,5 +49,10 @@ public class Customer : MonoBehaviour
                 meshRenderer.material = cookieSprite[2];
                 break;
         }   
+    }
+
+    public void HideOrder()
+    {
+        speechBubble.SetActive(false );
     }
 }

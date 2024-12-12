@@ -25,7 +25,6 @@ public class CustomerController : MonoBehaviour
             activeCustomer1 = Instantiate(customer);
             cookieTypeOrdered1 = Random.Range(1, 3);
             activeCustomer1.GetComponent<Customer>().ShowOrder(cookieTypeOrdered1);
-            Debug.Log(cookieTypeOrdered1);
             customerActive1 = true;
         }
         else if(customerActive1)
@@ -33,7 +32,6 @@ public class CustomerController : MonoBehaviour
             activeCustomer2 = Instantiate(customer);
             cookieTypeOrdered2 = Random.Range(1, 3);
             activeCustomer2.GetComponent<Customer>().ShowOrder(cookieTypeOrdered2);
-            Debug.Log(cookieTypeOrdered2);
             customerActive2 = true;
         }
         
@@ -79,9 +77,11 @@ public class CustomerController : MonoBehaviour
         {
             case 1:
                 activeCustomer1.GetComponent<Animator>().SetTrigger("WalkAway");
+                activeCustomer1.GetComponent<Customer>().HideOrder();
                 break;
             case 2:
                 activeCustomer2.GetComponent<Animator>().SetTrigger("WalkAway");
+                activeCustomer2.GetComponent<Customer>().HideOrder();
                 break;
         }
         StartCoroutine(DeinitializeCustomer(customer, 3f));
