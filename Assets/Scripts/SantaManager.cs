@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +38,7 @@ public class SantaManager : MonoBehaviour
 
     private void StartInterval()
     {
-        intervalTime = 5;//Random.Range(30, 100);
+        intervalTime = Random.Range(20, 60);
         Debug.Log("Santa will intialize in " + intervalTime);
         Invoke("InitializeSanta", intervalTime);
     }
@@ -56,7 +55,7 @@ public class SantaManager : MonoBehaviour
     {
         state = 2;
         activeSanta = Instantiate(santa, santaPos, Quaternion.Euler(0, 90, 0));
-        Invoke("RemoveCookies", 3f);
+        Invoke("RemoveCookies", 2.5f);
     }
 
     public void RemoveCookies()

@@ -23,14 +23,14 @@ public class CustomerController : MonoBehaviour
         if(!customerActive1)
         {
             activeCustomer1 = Instantiate(customer);
-            cookieTypeOrdered1 = Random.Range(1, 3);
+            cookieTypeOrdered1 = Random.Range(1, 4);
             activeCustomer1.GetComponent<Customer>().ShowOrder(cookieTypeOrdered1);
             customerActive1 = true;
         }
         else if(customerActive1)
         {
             activeCustomer2 = Instantiate(customer);
-            cookieTypeOrdered2 = Random.Range(1, 3);
+            cookieTypeOrdered2 = Random.Range(1, 4);
             activeCustomer2.GetComponent<Customer>().ShowOrder(cookieTypeOrdered2);
             customerActive2 = true;
         }
