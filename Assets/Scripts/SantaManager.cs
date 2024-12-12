@@ -56,6 +56,7 @@ public class SantaManager : MonoBehaviour
         state = 2;
         activeSanta = Instantiate(santa, santaPos, Quaternion.Euler(0, 90, 0));
         Invoke("RemoveCookies", 2.5f);
+        Invoke("StartInterval", 5f);
     }
 
     public void RemoveCookies()
