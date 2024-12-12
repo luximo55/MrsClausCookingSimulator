@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
+    public Material[] cookieSprite;
+    public GameObject speechBubble;
     private CustomerController customerController;
+    private MeshRenderer meshRenderer;
     private Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         customerController = FindAnyObjectByType<CustomerController>();
+        speechBubble.SetActive(false);
 
         if(!customerController.customerActive1)
         {
@@ -25,9 +29,27 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void ShowOrder(int cookieType)
     {
-        
-            
+        StartCoroutine(EnableSpeechBubble(cookieType));         
+    }
+
+    private IEnumerator EnableSpeechBubble(int cookieType)
+    {
+        yield return new WaitForSeconds(4f);
+        speechBubble.SetActive(true);
+        meshRenderer = speechBubble.GetComponent<MeshRenderer>();
+        switch(cookieType)
+        {
+            case 1:
+                meshRenderer.material = cookieSprite[0];
+                break;
+            case 2:
+                meshRenderer.material = cookieSprite[1];
+                break;
+            case 3:
+                meshRenderer.material = cookieSprite[2];
+                break;
+        }   
     }
 }

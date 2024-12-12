@@ -24,15 +24,17 @@ public class CustomerController : MonoBehaviour
         {
             activeCustomer1 = Instantiate(customer);
             cookieTypeOrdered1 = Random.Range(1, 3);
+            activeCustomer1.GetComponent<Customer>().ShowOrder(cookieTypeOrdered1);
             Debug.Log(cookieTypeOrdered1);
             customerActive1 = true;
         }
         else if(customerActive1)
         {
-            customerActive2 = true;
             activeCustomer2 = Instantiate(customer);
             cookieTypeOrdered2 = Random.Range(1, 3);
+            activeCustomer2.GetComponent<Customer>().ShowOrder(cookieTypeOrdered2);
             Debug.Log(cookieTypeOrdered2);
+            customerActive2 = true;
         }
         
     }
