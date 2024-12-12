@@ -187,7 +187,7 @@ public class ActionManager : MonoBehaviour
                     {
                         if(objectType == 3)
                         {
-                            StartCoroutine(ServeTimer(1));
+                            StartCoroutine(ServeTimer(2));
                             StartCoroutine(ServeAnimation(cookieType, 2));
                             serving2 = true;
                         }

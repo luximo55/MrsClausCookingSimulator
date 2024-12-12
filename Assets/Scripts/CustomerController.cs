@@ -44,21 +44,21 @@ public class CustomerController : MonoBehaviour
             case 1:
                 if(cookieTypeServed == cookieTypeOrdered1)
                 {
-                    workerEfficiency.Efficiency += 20f;
+                    workerEfficiency.efficiency += 20f;
                 }
                 else if (cookieTypeServed != cookieTypeOrdered1)
                 {
-                    workerEfficiency.Efficiency -= 15f;
+                    workerEfficiency.efficiency -= 15f;
                 }
                 break;
             case 2:
                 if(cookieTypeServed == cookieTypeOrdered2)
                 {
-                    workerEfficiency.Efficiency += 20f;
+                    workerEfficiency.efficiency += 20f;
                 }
                 else if (cookieTypeServed != cookieTypeOrdered2)
                 {
-                    workerEfficiency.Efficiency -= 15f;
+                    workerEfficiency.efficiency -= 15f;
                 }
                 break;
         }
@@ -67,7 +67,7 @@ public class CustomerController : MonoBehaviour
     public void RawOrder(int customer)
     {
         Debug.Log("This shit is raw");
-        workerEfficiency.Efficiency -=20f;
+        workerEfficiency.efficiency -=20f;
         CustomerWalkAway(customer);
     }
 

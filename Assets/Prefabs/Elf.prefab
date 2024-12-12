@@ -636,7 +636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e17f0a7fb0fe3b5c5a4e886c3d154d8a, type: 2}
+  - {fileID: 2100000, guid: f175a40cc53f7da6fa9b970639375888, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1414,8 +1414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookieSprite:
-  - {fileID: 2100000, guid: e17f0a7fb0fe3b5c5a4e886c3d154d8a, type: 2}
-  - {fileID: 2100000, guid: 593dde7e2ba09fc1a9a14bf4c4720343, type: 2}
+  - {fileID: 2100000, guid: f175a40cc53f7da6fa9b970639375888, type: 2}
+  - {fileID: 2100000, guid: 0fc2a8f69c1230dec9322487883ecee8, type: 2}
   - {fileID: 2100000, guid: 537adde6f0b78648a9a1eb4895cc1635, type: 2}
   speechBubble: {fileID: 4766817871610832729}
 --- !u!1 &7373709649626310718
