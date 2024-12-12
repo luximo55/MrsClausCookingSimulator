@@ -55,7 +55,7 @@ public class SantaManager : MonoBehaviour
     private void SantaSteal()
     {
         state = 2;
-        activeSanta = Instantiate(santa, santaPos, Quaternion.identity);
+        activeSanta = Instantiate(santa, santaPos, Quaternion.Euler(0, 90, 0));
         Invoke("RemoveCookies", 3f);
     }
 
