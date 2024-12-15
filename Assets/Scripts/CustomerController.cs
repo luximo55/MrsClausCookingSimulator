@@ -45,46 +45,65 @@ public class CustomerController : MonoBehaviour
                 if(cookieTypeServed == cookieTypeOrdered1)
                 {
                     workerEfficiency.efficiency += 20f;
+                    CustomerWalkAway(customer, 1);
                 }
                 else if (cookieTypeServed != cookieTypeOrdered1)
                 {
                     workerEfficiency.efficiency -= 15f;
+                    CustomerWalkAway(customer, 0);
                 }
                 break;
             case 2:
                 if(cookieTypeServed == cookieTypeOrdered2)
                 {
                     workerEfficiency.efficiency += 20f;
+                    CustomerWalkAway(customer, 1);
                 }
                 else if (cookieTypeServed != cookieTypeOrdered2)
                 {
                     workerEfficiency.efficiency -= 15f;
+                    CustomerWalkAway(customer, 0);
                 }
                 break;
         }
-        CustomerWalkAway(customer);
+        
     }
     public void RawOrder(int customer)
     {
-        Debug.Log("This shit is raw");
         workerEfficiency.efficiency -=20f;
-        CustomerWalkAway(customer);
+        CustomerWalkAway(customer, 0);
     }
 
-    private void CustomerWalkAway(int customer)
+    private void CustomerWalkAway(int customer, int satisfaction)
     {
         switch (customer)
         {
             case 1:
-                activeCustomer1.GetComponent<Animator>().SetTrigger("WalkAway");
+                switch (satisfaction)
+                {
+                    case 0:
+                        activeCustomer1.GetComponent<Animator>().SetTrigger("WalkAwayAngry");
+                        break;
+                    case 1:
+                        activeCustomer1.GetComponent<Animator>().SetTrigger("WalkAwayHappy");
+                        break;
+                }
                 activeCustomer1.GetComponent<Customer>().HideOrder();
                 break;
             case 2:
-                activeCustomer2.GetComponent<Animator>().SetTrigger("WalkAway");
+                switch (satisfaction)
+                {
+                    case 0:
+                        activeCustomer2.GetComponent<Animator>().SetTrigger("WalkAwayAngry");
+                        break;
+                    case 1:
+                        activeCustomer2.GetComponent<Animator>().SetTrigger("WalkAwayHappy");
+                        break;
+                }
                 activeCustomer2.GetComponent<Customer>().HideOrder();
                 break;
         }
-        StartCoroutine(DeinitializeCustomer(customer, 3f));
+        StartCoroutine(DeinitializeCustomer(customer, 5f));
     }
 
     private IEnumerator DeinitializeCustomer(int customer, float delay)

@@ -14,18 +14,5 @@ public class StationManager : MonoBehaviour
 
     public void ChangeMaterial(string stationName, bool occupied)
     {
-        switch (stationName)
-        {
-            case "oven":
-                if(occupied)
-                {
-                    oven.GetComponent<MeshRenderer>().material = occupiedMat;
-                }
-                else if (!occupied)
-                {
-                    oven.GetComponent<MeshRenderer>().material = unoccupiedMat;
-                }
-                break;
-        }
     }
 }

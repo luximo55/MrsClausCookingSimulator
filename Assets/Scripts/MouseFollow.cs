@@ -10,6 +10,10 @@ public class MouseFollow : MonoBehaviour
     void Awake()
     {
         main = Camera.main;
+        if(transform.position == new Vector3(0f, -2.8f, 0.7f))
+        {
+            layerMask = 0;
+        }
     }
     void Update()
     {

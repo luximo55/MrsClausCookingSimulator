@@ -29,12 +29,15 @@ public class ActionManager : MonoBehaviour
     public Vector3[] platePositions1;
     public Vector3[] platePositions2;
     public Vector3[] plateRotations;
+    public Vector3 ovenTrayPosition;
     public GameObject[] prepareCookies;
     public GameObject[] serveCookies;
     public GameObject[] cookieDough;
     public GameObject[] rawCookies;
     public GameObject[] bakedCookies;
     public GameObject[] cookiePlate;
+    public Animator ovenAnim;
+    private GameObject activeOvenTray;
     private GameObject activeObject;
     private GameObject[] activePrepareCookies = new GameObject[4];
     private GameObject[] activeServeCookies1 = new GameObject [4];
@@ -132,22 +135,27 @@ public class ActionManager : MonoBehaviour
                     {
                         if(objectType == 2)
                         {
-                            Invoke("OvenTimer", 5f);
+                            ovenAnim.SetTrigger("Toggle");
+                            StartCoroutine(OvenBake(cookieType));
+                            activeOvenTray = Instantiate(rawCookies[cookieType-1], ovenTrayPosition, Quaternion.identity);
                             ovenActive = true;
+                        }
+                        else if (objectType == 3)
+                        {
+                            
                         }
                         DestroyObject();
                         ovenOccupied = true;
                         ovenTemp = cookieType;
-                        stationManager.ChangeMaterial("oven", ovenOccupied);
                     }
                     else if (Input.GetMouseButtonDown(0) && !activeInstantiation && !activeObject && ovenOccupied && !ovenActive)
                     {
                         activeObject = Instantiate(bakedCookies[ovenTemp-1]);
+                        Destroy(activeOvenTray);
                         objectType = 3;
                         cookieType = ovenTemp;
                         activeInstantiation = true;
                         ovenOccupied = false;
-                        stationManager.ChangeMaterial("oven", ovenOccupied);
                     }
                     break;
                 case "serve1":
@@ -297,8 +305,12 @@ public class ActionManager : MonoBehaviour
     {
         preparing = false;
     }
-    private void OvenTimer()
+    private IEnumerator OvenBake(int cookieType)
     {
+        yield return new WaitForSeconds(3f);
+        Destroy(activeOvenTray);
+        activeOvenTray = Instantiate(bakedCookies[cookieType-1], ovenTrayPosition, Quaternion.identity);
+        yield return new WaitForSeconds(2f);
         ovenActive = false;
     }
     private void DestroyObject()

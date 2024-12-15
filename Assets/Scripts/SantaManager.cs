@@ -25,7 +25,7 @@ public class SantaManager : MonoBehaviour
 
     private void Update()
     {
-        if(activeSanta != null && activeSanta.GetComponent<Transform>().localPosition.x == 17 && state == 1)
+        if(activeSanta != null && activeSanta.GetComponent<Transform>().localPosition.x == 70 && state == 1)
         {
             Destroy(activeSanta);
             Invoke("SantaSteal", 5f);
