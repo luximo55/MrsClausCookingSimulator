@@ -14,6 +14,9 @@ Marin Bogdanović <br>
 Marin Bogdanović, <br>
 Hana Žeželj
 
+# Software used
+Unity 3D (2022.3.46f1)<br>
+Blender 4.3
 # Screenshots
 ![Alt text](/Screenshots/Screenshot1.png)
 ![Alt text](/Screenshots/Screenshot2.png)
