@@ -31,7 +31,8 @@ public class Customer : MonoBehaviour
     {
         StartCoroutine(EnableSpeechBubble(cookieType));         
     }
-
+    
+    //enables the speechBubble and sets the material based on the cookieType
     private IEnumerator EnableSpeechBubble(int cookieType)
     {
         yield return new WaitForSeconds(4f);
@@ -53,6 +54,6 @@ public class Customer : MonoBehaviour
 
     public void HideOrder()
     {
-        speechBubble.SetActive(false );
+        speechBubble.SetActive(false);
     }
 }

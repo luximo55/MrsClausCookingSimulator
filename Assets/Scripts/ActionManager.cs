@@ -13,7 +13,6 @@ public class ActionManager : MonoBehaviour
     [SerializeField] private Camera main;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private CustomerController customerController;
-    [SerializeField] private StationManager stationManager;
 
     private bool activeInstantiation;
     private bool prepareOccupied = false;
@@ -25,11 +24,13 @@ public class ActionManager : MonoBehaviour
     public bool servingOccupied1 = false;
     public bool servingOccupied2 = false;
 
+    [Header("Coordinates")]
     public Vector3[] trayPositions;
     public Vector3[] platePositions1;
     public Vector3[] platePositions2;
     public Vector3[] plateRotations;
     public Vector3 ovenTrayPosition;
+    [Header("Prefabs")]
     public GameObject[] prepareCookies;
     public GameObject[] serveCookies;
     public GameObject[] cookieDough;
@@ -53,11 +54,19 @@ public class ActionManager : MonoBehaviour
     
     void Update()
     {
+        //Used to detect where exactly in the world has the ray been casted
         Ray ray = main.ScreenPointToRay(Input.mousePosition);
+        //Detects what object the ray hit
         if(Physics.Raycast(ray, out RaycastHit raycasthit, float.MaxValue, layerMask))
         {
             switch (raycasthit.collider.name)
             {
+                /*When the ray hits an object called xCookies it sets variables such as objectType and cookieType 
+                so that it can transfer those to later functions
+
+                If there is already something that "the player is holding" and has objectType 1 (raw dough), 
+                then it just removes that object
+                */
                 case "milkCookies":
                     if(Input.GetMouseButtonDown(0) && !activeInstantiation)
                     {
@@ -97,6 +106,14 @@ public class ActionManager : MonoBehaviour
                         DestroyObject();               
                     }
                     break;
+                /*Most of these stations check the same thing, that being:
+                    - setting a timer for z seconds
+                    - activating animations
+                    - destroying the object
+                    - preserving the type of cookie
+                Essentially they are used to make actions the pretty much seamless
+                Also that but in reverse
+                */
                 case "prepare":
                     if(Input.GetMouseButtonDown(0) && activeInstantiation && !prepareOccupied && (objectType == 1 || objectType == 2))
                     {
@@ -108,6 +125,7 @@ public class ActionManager : MonoBehaviour
                         }
                         else if (objectType == 2)
                         {
+                            //This for does the same thing the for inside of "PrepareAnimation" and "ServeAnimation" does with cookies but instantly 
                             for(int i = 0; i < 4; i++)
                             {
                                 activePrepareCookies[i] = Instantiate(prepareCookies[cookieType-1], trayPositions[i], Quaternion.Euler(0,0,0));
@@ -171,7 +189,7 @@ public class ActionManager : MonoBehaviour
                         {
                             for(int i = 0; i < 4; i++)
                             {
-                                    activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
+                                activeServeCookies1[i] = Instantiate(serveCookies[cookieType-1], platePositions1[i], Quaternion.Euler(plateRotations[i]));
                             }
                         }
                         DestroyObject();
@@ -287,6 +305,7 @@ public class ActionManager : MonoBehaviour
         }
     }
 
+    //yTimer (and OvenBake) is used to "end" the action made on the cookies (for example, baking, when the timer is done, the baking is done)
     private IEnumerator ServeTimer(int num)
     {
         yield return new WaitForSeconds(1.1f);
@@ -305,6 +324,8 @@ public class ActionManager : MonoBehaviour
     {
         preparing = false;
     }
+
+    //Along with the timer function, it has to manage how it moves and what happens with the tray going in
     private IEnumerator OvenBake(int cookieType)
     {
         yield return new WaitForSeconds(3f);
@@ -313,17 +334,24 @@ public class ActionManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         ovenActive = false;
     }
+
+    //Destroys the activeObject, resets temporary variables
     private void DestroyObject()
     {
         Destroy(activeObject);
         objectType = 0;
         activeInstantiation = false;
     }
+
+    /*When the order is given to the elf, it sets the cookieTypeServed as the type of cookie given to them
+    It it later read by another function that checks the validity of the order
+    */
     private void SendOrder()
     {
         cookieTypeServed = cookieType;
     }
 
+    //check which serving Santa has chosen to steal from, and removes them
     public void SantaStealCookies(int servePlace)
     {
         if(servePlace == 1)

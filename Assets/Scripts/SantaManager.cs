@@ -36,6 +36,7 @@ public class SantaManager : MonoBehaviour
         }
     }
 
+    //Decides in what time is Santa initialized
     private void StartInterval()
     {
         intervalTime = Random.Range(20, 60);
@@ -48,7 +49,6 @@ public class SantaManager : MonoBehaviour
         Debug.Log("Santa is initialized");
         state = 1;
         activeSanta = Instantiate(santaSleigh, transf);
-        
     }
 
     private void SantaSteal()
@@ -59,6 +59,7 @@ public class SantaManager : MonoBehaviour
         Invoke("StartInterval", 5f);
     }
 
+    //Checks which serving place has cookies
     public void RemoveCookies()
     {
         if(actionManager.servingOccupied1)

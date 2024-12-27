@@ -18,6 +18,7 @@ public class CustomerController : MonoBehaviour
         Invoke("InitializeCustomer", 1);
         Invoke("InitializeCustomer", 5);
     }
+
     private void InitializeCustomer()
     {
         if(!customerActive1)
@@ -37,6 +38,7 @@ public class CustomerController : MonoBehaviour
         
     }
 
+    //Checks if the cookieTypeServed coresponds to the ordered type, deciding whether to give 20 or take away 15 efficiency points 
     public void CheckOrder(int cookieTypeServed, int customer)
     {
         switch(customer)
@@ -68,12 +70,15 @@ public class CustomerController : MonoBehaviour
         }
         
     }
+
+    //if the objectType is not at its maximum (4) it is considered a raw order taking away 20 efficiency points 
     public void RawOrder(int customer)
     {
         workerEfficiency.efficiency -=20f;
         CustomerWalkAway(customer, 0);
     }
 
+    //Based on the validity of their order they walk away happy or angry and start their deinitialization
     private void CustomerWalkAway(int customer, int satisfaction)
     {
         switch (customer)
